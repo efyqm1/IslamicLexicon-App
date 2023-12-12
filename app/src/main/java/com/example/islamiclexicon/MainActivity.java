@@ -99,13 +99,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void startSearch(String text) {
 
-        adapter = new SearchAdapter(this, database.getIslamicWordbyArabic_word(text));
+        adapter = new SearchAdapter(this, database.getIslamicWordbyTransliteration(text));
         recyclerView.setAdapter(adapter);
 
     }
 
     private void loadSuggestList() {
-        suggestList = database.getArabic_word();
+        suggestList = database.getTransliteration();
         materialSearchBar.setLastSuggestions(suggestList);
     }
 }

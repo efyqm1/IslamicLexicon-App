@@ -51,12 +51,12 @@ public class Database extends SQLiteAssetHelper {
 
     // Function get all IslamicWord's arabic_word
     @SuppressLint("Range")
-    public List<String> getArabic_word(){
+    public List<String> getTransliteration(){
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
         // Make sure all is column name in your Table
-        String[] sqlSelect = {"arabic_word"};
+        String[] sqlSelect = {"transliteration"};
         String tableName = "IslamicWords"; //Make sure this is your table name
 
         qb.setTables(tableName);
@@ -64,15 +64,15 @@ public class Database extends SQLiteAssetHelper {
         List<String> result = new ArrayList<>();
         if(cursor.moveToFirst()){
             do{
-                result.add(cursor.getString(cursor.getColumnIndex("arabic_word")));
+                result.add(cursor.getString(cursor.getColumnIndex("transliteration")));
             }while (cursor.moveToNext());
         }
         return result;
     }
 
-    // Function get IslamicWord by arabic_word
+    // Function get IslamicWord by transliteration
     @SuppressLint("Range")
-    public List<IslamicWord> getIslamicWordbyArabic_word(String arabic_word){
+    public List<IslamicWord> getIslamicWordbyTransliteration(String transliteration){
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
@@ -85,7 +85,7 @@ public class Database extends SQLiteAssetHelper {
         // Cursor cursor = qb.query(db, sqlSelect, "arabic_word = ?", new String[]{arabic_word}, null, null, null);
 
         // This will like query: Select * from IslamicWords where arabic_word LIKE %pattern%
-        Cursor cursor = qb.query(db, sqlSelect, "arabic_word LIKE ?", new String[]{"%"+arabic_word+"%"}, null, null, null);
+        Cursor cursor = qb.query(db, sqlSelect, "transliteration LIKE ?", new String[]{"%"+transliteration+"%"}, null, null, null);
         List<IslamicWord> result = new ArrayList<>();
         if(cursor.moveToFirst()){
             do{

@@ -51,7 +51,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder>{
         holder.arabic_word.setText(islamicWords.get(position).getArabic_word());
         holder.transliteration.setText(islamicWords.get(position).getTransliteration());
         holder.literal_translation.setText(islamicWords.get(position).getLiteral_translation());
-        holder.literal_translation.setText(islamicWords.get(position).getLiteral_translation());
+        holder.technical_meaning.setText(islamicWords.get(position).getTechnical_meaning());
         holder.arabic_root_word.setText(islamicWords.get(position).getArabic_root_word());
 
     }
