@@ -23,7 +23,7 @@ public class Database extends SQLiteAssetHelper {
 
     // Function get all IslamicWords
     @SuppressLint("Range")
-    public List<IslamicWord> getIslamicWord(){
+    public List<IslamicWord> getIslamicWords(){
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
