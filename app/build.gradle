@@ -43,6 +43,6 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:cardview-v7:26.1.0'
 
-    implementation 'com.github.manoj:MaterialSearchBar:+'
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
 
 }
