@@ -14,26 +14,31 @@ import java.util.List;
 
 public class Database extends SQLiteAssetHelper {
 
+    // Database name and version
     private static final String DB_NAME = "IslamicWords.db";
     private static final int DB_VER = 1;
 
+    // Constructor to initialize the database
     public Database(Context context) {
         super(context, DB_NAME, null, DB_VER);
     }
 
-    // Function get all IslamicWords
+    // Function to get all IslamicWords
     @SuppressLint("Range")
-    public List<IslamicWord> getIslamicWords(){
+    public List<IslamicWord> getIslamicWords() {
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        // Make sure all is column name in your Table
+        // Define the columns to be retrieved from the table
         String[] sqlSelect = {"arabic_word", "transliteration","literal_translation", "technical_meaning", "arabic_root_word"};
-        String tableName = "IslamicWords"; //Make sure this is your table name
+        String tableName = "IslamicWords";
 
+        // Set up the query builder
         qb.setTables(tableName);
         Cursor cursor = qb.query(db, sqlSelect, null, null, null, null, null);
         List<IslamicWord> result = new ArrayList<>();
+
+        // Iterate through the cursor to retrieve IslamicWords
         if(cursor.moveToFirst()){
             do{
                 IslamicWord islamicWord = new IslamicWord();
@@ -44,49 +49,52 @@ public class Database extends SQLiteAssetHelper {
                 islamicWord.setArabic_root_word(cursor.getString(cursor.getColumnIndex("arabic_root_word")));
 
                 result.add(islamicWord);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         return result;
     }
 
-    // Function get all IslamicWord's arabic_word
+    // Function to get all IslamicWord's transliteration
     @SuppressLint("Range")
-    public List<String> getTransliteration(){
+    public List<String> getTransliteration() {
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        // Make sure all is column name in your Table
+        // Define the columns to be retrieved from the table
         String[] sqlSelect = {"transliteration"};
-        String tableName = "IslamicWords"; //Make sure this is your table name
+        String tableName = "IslamicWords";
 
+        // Set up the query builder
         qb.setTables(tableName);
         Cursor cursor = qb.query(db, sqlSelect, null, null, null, null, null);
         List<String> result = new ArrayList<>();
+
+        // Iterate through the cursor to retrieve transliterations
         if(cursor.moveToFirst()){
             do{
                 result.add(cursor.getString(cursor.getColumnIndex("transliteration")));
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         return result;
     }
 
-    // Function get IslamicWord by transliteration
+    // Function to get IslamicWord by transliteration
     @SuppressLint("Range")
     public List<IslamicWord> getIslamicWordbyTransliteration(String transliteration){
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        // Make sure all is column name in your Table
+        // Define the columns to be retrieved from the table
         String[] sqlSelect = {"arabic_word", "transliteration","literal_translation", "technical_meaning", "arabic_root_word"};
-        String tableName = "IslamicWords"; //Make sure this is your table name
+        String tableName = "IslamicWords";
 
+        // Set up the query builder
         qb.setTables(tableName);
-        // If you want to get extract name, just change
-        // Cursor cursor = qb.query(db, sqlSelect, "arabic_word = ?", new String[]{arabic_word}, null, null, null);
-
-        // This will like query: Select * from IslamicWords where arabic_word LIKE %pattern%
+        // Query to retrieve IslamicWords based on transliteration pattern
         Cursor cursor = qb.query(db, sqlSelect, "transliteration LIKE ?", new String[]{"%"+transliteration+"%"}, null, null, null);
         List<IslamicWord> result = new ArrayList<>();
+
+        // Iterate through the cursor to retrieve IslamicWords
         if(cursor.moveToFirst()){
             do{
                 IslamicWord islamicWord = new IslamicWord();
@@ -97,9 +105,8 @@ public class Database extends SQLiteAssetHelper {
                 islamicWord.setArabic_root_word(cursor.getString(cursor.getColumnIndex("arabic_root_word")));
 
                 result.add(islamicWord);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         return result;
     }
-
 }
