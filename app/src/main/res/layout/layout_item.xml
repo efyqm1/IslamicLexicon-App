@@ -14,62 +14,118 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <!--<ImageView
             android:src="@drawable/baseline_account_circle_24"
             android:layout_width="70dp"
-            android:layout_height="70dp" />
+            android:layout_height="70dp" /> -->
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_weight="9"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/arabic_word"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical|start"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:text="زكاة"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/transliteration"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical|start"
-                android:textStyle="italic"
-                android:text="Zakaat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/transliteration"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:textStyle="italic|bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
-            <TextView
-                android:id="@+id/literal_translation"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical|start"
-                android:textStyle="italic"
-                android:text="Purification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:text="|"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/technical_meaning"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical|start"
-                android:textStyle="normal"
-                android:text="Obligatory alms-giving"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/arabic_word"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
-            <TextView
-                android:id="@+id/arabic_root_word"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical|start"
-                android:textStyle="normal"
-                android:text="ز ك و"
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Literal translation   : "
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:textStyle="italic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/literal_translation"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:textStyle="italic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Technical meaning : "
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:textStyle="italic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/technical_meaning"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:textStyle="normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Arabic root word      : "
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:textStyle="italic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/arabic_root_word"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:textStyle="normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
