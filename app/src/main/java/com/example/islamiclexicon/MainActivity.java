@@ -3,14 +3,13 @@ package com.example.islamiclexicon;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 
 import com.example.islamiclexicon.Adapter.SearchAdapter;
 import com.example.islamiclexicon.Database.Database;
-import com.google.android.material.search.SearchBar;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import java.util.ArrayList;
@@ -75,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSearchStateChanged(boolean enabled) {
                 if(!enabled){
+                    // If close Search, just restore default
+                    adapter = new SearchAdapter(getBaseContext(), database.getIslamicWords());
                     recyclerView.setAdapter(adapter);
                 }
             }
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Init Adapter default set all result
         adapter = new SearchAdapter(this, database.getIslamicWords());
+        recyclerView.setAdapter(adapter);
 
     }
 
